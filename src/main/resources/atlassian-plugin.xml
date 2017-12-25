@@ -1,0 +1,72 @@
+<atlassian-plugin key="${atlassian.plugin.key}" name="${project.name}" plugins-version="2">
+    <plugin-info>
+        <description>${project.description}</description>
+        <version>${project.version}</version>
+        <vendor name="${project.organization.name}" url="${project.organization.url}" />
+        <param name="plugin-icon">images/pluginIcon.png</param>
+        <param name="plugin-logo">images/pluginLogo.png</param>
+    </plugin-info>
+
+    <resource type="i18n" name="i18n" location="/i18n/hidden-row"/>
+    <resource type="download" name="images/" location="/images"/>
+
+    <web-resource key="editor-content-resources" name="Editor Content Web Resources">
+        <dependency>com.atlassian.auiplugin:aui-buttons</dependency>
+
+        <resource type="download" name="editor.css" location="/css/editor.css"/>
+
+        <context>editor-content</context>
+    </web-resource>
+
+    <!--web-resource key="editor-resources" name="Editor Web Resources">
+        <dependency>com.atlassian.confluence.keyboardshortcuts:confluence-tinymce-keyboard-shortcuts</dependency>
+
+        <resource type="download" name="editor.js" location="/js/editor.js"/>
+
+        <context>editor</context>
+    </web-resource-->
+
+    <web-resource key="resources" name="General Web Resources">
+        <transformation extension="soy">
+            <transformer key="soyTransformer">
+                <functions>com.atlassian.confluence.plugins.soy:soy-core-functions</functions>
+            </transformer>
+        </transformation>
+        <transformation extension="js">
+            <transformer key="jsI18n"/>
+        </transformation>
+
+        <resource type="download" name="hidden-row.soy.js" location="/templates/hidden-row.soy"/>
+        <resource type="download" name="hidden-row.css"    location="/css/hidden-row.css"/>
+        <resource type="download" name="hidden-row.js"     location="/js/hidden-row.js"/>
+        <resource type="download" name="images/"           location="/images"/>
+
+        <context>hidden-row</context>
+        <context>atl.general</context>
+    </web-resource>
+
+﻿   <xhtml-macro
+        key="add-row"
+        name="Add Row Button"
+        class="com.mesilat.hrow.AddRowButtonMacro"
+        state="enabled"
+        icon="/download/resources/com.mesilat.hidden-row/images/pluginLogo.png">
+
+        <resource type="i18n" name="i18n" location="/i18n/hidden-row"/>
+        <category name="reporting"/>
+        <description key="com.mesilat.hidden-row.add-row.desc"></description>
+        <parameters>
+        </parameters>
+    </xhtml-macro>
+
+<!--
+    <keyboard-shortcut key="select-crm-object" i18n-name="com.mesilat.crm.select-crm-object"
+                       name="CRM Select">
+        <order>10</order>
+        <description key="com.mesilat.crm.select-crm-object.desc"></description>
+        <shortcut>[Ctrl+Shift+5]</shortcut>
+        <operation type="execute">com_mesilat_selectCrmLink</operation>
+        <context>tinymce.rich</context>
+    </keyboard-shortcut>
+-->
+</atlassian-plugin>
