@@ -40,8 +40,18 @@
                     if ($table === null){
                         console.log('com.mesilat:hidden-row','WARN: no table found for button');
                     } else {
+                        /*
                         var $tr = $table.find('tbody tr').last();
                         $('<tr>' + $tr.html() + '</tr>').insertBefore($tr);
+                        */
+                        var $tr = $table.find('tbody tr').filter(function(i,elt){
+                            return $table[0] === $(elt).closest('table')[0];
+                        }).last();
+                        var $newTr = $('<tr>');
+                        $newTr.append($tr.html());
+                        $newTr.attr('class', $tr.attr('class'));
+                        $newTr.insertBefore($tr);
+                        $newTr.removeClass('com-mesilat-hidden-row-lastrow');
                     }
                 });
 

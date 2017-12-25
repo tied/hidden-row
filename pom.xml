@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mesilat</groupId>
     <artifactId>hidden-row</artifactId>
-    <version>1.0.0-SNAPSHOT</version>
+    <version>1.0.0</version>
 
     <organization>
         <name>Mesilat Limited</name>
@@ -15,7 +15,7 @@
     </organization>
 
     <name>Hidden Row</name>
-    <description>This is the com.mesilat:hidden-row plugin for Atlassian Confluence.</description>
+    <description>Hidden Row addon for Atlassian Confluence.</description>
     <packaging>atlassian-plugin</packaging>
 
     <dependencies>
