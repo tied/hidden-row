@@ -1,17 +1,22 @@
 (function(AJS,$){
     function findTable($elt){
         var $parent = $elt.parent();
+        var $table = null;
         for (var i = 0; i < $parent.children().length; i++){
             if ($parent.children()[i].tagName === 'TABLE'){
-                return $($parent.children()[i]);
+                $table = $($parent.children()[i]);
             } else if ($parent.children()[i].tagName === 'DOCUMENT'){
                 return null;
             } else if ($parent.children()[i] === $elt[0]){
-                return findTable($parent);
+                break;
             }
         }
-    }
-
+        if ($table === null){
+            return findTable($parent);
+        } else {
+            return $table;
+        }
+    };
     function init(n){
         if (n > 1000){
             return;
@@ -60,7 +65,9 @@
             if ($table === null){
                 console.log('com.mesilat:hidden-row','WARN: no table found for button');
             } else {
-                var $tr = $table.find('tbody tr').last();
+                var $tr = $table.find('tbody tr').filter(function(i,elt){
+                    return $table[0] === $(elt).closest('table')[0];
+                }).last();
                 if ($tr.length === 0){
                     console.log('com.mesilat:hidden-row','WARN: no rows in table');
                 } else {
@@ -68,7 +75,7 @@
                 }
             }
         });
-    }
+    };
 
     AJS.bind('rte-ready', function(){
         setTimeout(init, 100, 0);

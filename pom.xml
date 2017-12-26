@@ -7,7 +7,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.mesilat</groupId>
     <artifactId>hidden-row</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1</version>
 
     <organization>
         <name>Mesilat Limited</name>
@@ -15,7 +15,7 @@
     </organization>
 
     <name>Hidden Row</name>
-    <description>Hidden Row addon for Atlassian Confluence.</description>
+    <description>Hidden Row addon for Atlassian Confluence</description>
     <packaging>atlassian-plugin</packaging>
 
     <dependencies>
@@ -66,8 +66,8 @@
                     <instructions>
                         <Atlassian-Plugin-Key>${atlassian.plugin.key}</Atlassian-Plugin-Key>
 
-                        <!-- Add package to export here -->
                         <Export-Package>
+                            com.mesilat.hrow
                         </Export-Package>
 
                         <!-- Add package import here -->
